@@ -53,6 +53,7 @@ function playRound(userChoice) {
     if (userChoice == "rock") {
         if (computerChoice == "rock") {
             results.innerText = `Tie! You both picked ${userChoice}.`;
+
         } if (computerChoice == "scissors") {
             playerScore++;
             playerScoreDisplay.innerText = `Player: ${playerScore}`;
@@ -70,26 +71,38 @@ function playRound(userChoice) {
 
     if (userChoice == "paper") {
         if (computerChoice == "paper") {
-            alert(`Tie! You both picked ${userChoice}`)
+            results.innerText = `Tie! You both picked ${userChoice}.`;
+
         } if (computerChoice == "scissors") {
-            alert(`You lose! You picked ${userChoice} and the computer picked ${computerChoice}!`)
             computerScore++;
+            computeScoreDisplay.innerText = `Computer ${computerScore}`;
+            results.innerText = `You lose! You picked ${userChoice} and the computer picked ${computerChoice}!`;
+            scoreChecker();
+
         } if (computerChoice == "rock") { 
-            alert(`You win! You picked ${userChoice} and the computer picked ${computerChoice}!`)
             playerScore++;
+            playerScoreDisplay.innerText = `Player: ${playerScore}`;
+            results.innerText = `You win! You picked ${userChoice} and the computer picked ${computerChoice}!`
+            scoreChecker();
             
         }
     }
 
     if (userChoice == "scissors") {
         if (computerChoice == "scissors") {
-            alert(`Tie! You both picked ${userChoice}`)
+            results.innerText = `Tie! You both picked ${userChoice}.`;
+
         } if (computerChoice == "paper") {
             playerScore++;
-            alert(`You win! You picked ${userChoice} and the computer picked ${computerChoice}!`)
+            playerScoreDisplay.innerText = `Player: ${playerScore}`;
+            results.innerText = `You win! You picked ${userChoice} and the computer picked ${computerChoice}!`
+            scoreChecker();
+
         } if (computerChoice == "rock") { 
             computerScore++;
-            alert(`You lose! You picked ${userChoice} and the computer picked ${computerChoice}!`)
+            computeScoreDisplay.innerText = `Computer ${computerScore}`;
+            results.innerText = `You lose! You picked ${userChoice} and the computer picked ${computerChoice}!`;
+            scoreChecker();
             
         }
     }
@@ -101,4 +114,12 @@ let computerChoice = computerPicker();
 
 rockButton.addEventListener('click', function() {
     playRound("rock")
+});
+
+paperButton.addEventListener('click', function() {
+    playRound('paper')
+});
+
+scissorButton.addEventListener('click', function() {
+    playRound('scissors')
 });
